@@ -1,4 +1,4 @@
-package com.mylearning.course;
+package com.mylearning;
 
 
 import org.springframework.boot.SpringApplication;

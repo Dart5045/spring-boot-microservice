@@ -13,11 +13,15 @@ public class CourseStudentServiceImp implements  CourseStudentService{
 
     @Override
     public Boolean addCourseStudent(Integer courseId, Integer studentId) {
+
+        System.out.println("me han llamado");
+
         CourseStudent courseStudent = CourseStudent
                 .builder()
                 .studentId(studentId)
                 .id(courseId)
                 .build();
+        courseStudentRepository.save(courseStudent);
         return true;
     }
 }

@@ -1,22 +1,21 @@
 package com.mylearning.coursestudent;
 
 
-import com.mylearning.DTO.CourseDTO;
-import com.mylearning.DTO.CourseStudentResponse;
-import com.mylearning.course.CourseServiceImp;
-import jakarta.persistence.GeneratedValue;
-import lombok.AllArgsConstructor;
+import com.mylearning.clients.coursestudent.CourseStudentResponse;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@AllArgsConstructor
-@RequestMapping("app/v1/coursesstudents")
+@RequestMapping("app/v1/courses-students")
 public class CourseStudentController {
 
-    private final CourseStudentService courseStudentService;
+    private final CourseStudentServiceImp courseStudentService;
+
+    public CourseStudentController(CourseStudentServiceImp courseStudentService) {
+        this.courseStudentService = courseStudentService;
+    }
 
 
-    @GetMapping("{studentId}/{courseId}")
+    @GetMapping("/{studentId}/{courseId}")
     public CourseStudentResponse addCourseStudent(@PathVariable("studentId") Integer studentId,
                                                   @PathVariable("courseId") Integer courseId)
     {

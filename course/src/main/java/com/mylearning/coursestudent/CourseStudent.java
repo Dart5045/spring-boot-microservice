@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-
 public class CourseStudent {
     @Id
     @SequenceGenerator(
@@ -25,6 +24,5 @@ public class CourseStudent {
     )
     private Integer id;
 
-    @Id
     private Integer studentId;
 }

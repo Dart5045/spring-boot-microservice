@@ -1,6 +1,5 @@
 package com.mylearning.course;
 
-
 import com.mylearning.coursestudent.CourseStudent;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -29,8 +29,13 @@ public class Course {
 
     private String name;
 
+
+    /*
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "course_id")
     private List<CourseStudent> courseStudents;
-
+    public Course() {
+        courseStudents = new ArrayList<>();
+    }
+  */
 }
