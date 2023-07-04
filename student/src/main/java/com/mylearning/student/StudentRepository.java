@@ -1,4 +1,4 @@
-package com.mylearning;
+package com.mylearning.student;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,4 +1,5 @@
-package com.mylearning;
+package com.mylearning.coursestudent;
+
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,18 +12,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Student {
+
+public class CourseStudent {
     @Id
     @SequenceGenerator(
-            name = "student_id_sequence",
-            sequenceName = "student_id_sequence"
+            name = "course_student_id_sequence",
+            sequenceName = "course_student_id_sequence"
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "student_id_sequence"
+            generator = "course_student_id_sequence"
     )
     private Integer id;
-    private String firstName;
-    private String lastName;
-    private String email;
+
+    @Id
+    private Integer studentId;
 }
