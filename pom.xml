@@ -11,8 +11,8 @@
   <modules>
     <module>student</module>
       <module>course</module>
-    <module>eureka-server</module>
-    <module>clients</module>
+      <module>eureka-server</module>
+      <module>clients</module>
       <module>notification</module>
       <module>apigw</module>
       <module>amqp</module>
@@ -20,6 +20,16 @@
 
   <name>microservices</name>
   <url>http://mylearning.com</url>
+  <developers>
+    <developer>
+      <id>bladimirg</id>
+      <name>Bladimir Gonzales Miranda</name>
+    </developer>
+  </developers>
+  <scm>
+    <url>https://github.com/Dart5045/spring-boot-microservice</url>
+    <connection>scm:git:https://github.com/Dart5045/spring-boot-microservice.git</connection>
+  </scm>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -29,24 +39,24 @@
     <spring.cloud.dependencies.version>2022.0.3</spring.cloud.dependencies.version>
     <spring.boot.maven.plugin.version>3.1.0</spring.boot.maven.plugin.version>
   </properties>
-<dependencyManagement>
-  <dependencies>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-dependencies</artifactId>
-      <version>${spring.boot.dependencies.version}</version>
-      <scope>import</scope>
-      <type>pom</type>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-dependencies</artifactId>
-      <version>${spring.cloud.dependencies.version}</version>
-      <scope>import</scope>
-      <type>pom</type>
-    </dependency>
-  </dependencies>
-</dependencyManagement>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring.boot.dependencies.version}</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring.cloud.dependencies.version}</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
   <dependencies>
     <dependency>
       <groupId>org.projectlombok</groupId>
@@ -69,9 +79,26 @@
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-maven-plugin</artifactId>
           <version>${spring.boot.maven.plugin.version}</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>repackage</goal>
+              </goals>
+            </execution>
+          </executions>
         </plugin>
-
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.10.1</version>
+        <configuration>
+          <source>18</source>
+          <target>18</target>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>
