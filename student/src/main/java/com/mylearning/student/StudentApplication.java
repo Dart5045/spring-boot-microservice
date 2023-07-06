@@ -8,7 +8,11 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableFeignClients(
         basePackages = "com.mylearning.clients"
 )
-@SpringBootApplication
+@SpringBootApplication(
+        scanBasePackages = {
+                "com.mylearning.student",
+                "com.mylearning.amqp"}
+)
 public class StudentApplication {
     public static void main(String[] args) {
         SpringApplication.run(StudentApplication.class, args);

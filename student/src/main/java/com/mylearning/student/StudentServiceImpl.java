@@ -1,6 +1,7 @@
 package com.mylearning.student;
 
 import com.mylearning.DTO.StudentRegistrationRequestDTO;
+import com.mylearning.amqp.RabbitMQMessageProducer;
 import com.mylearning.clients.coursestudent.CourseStudentClient;
 import com.mylearning.clients.coursestudent.CourseStudentResponse;
 import com.mylearning.clients.notification.NotificationClient;
@@ -12,13 +13,12 @@ public class StudentServiceImpl implements StudentService{
 
     private final StudentRepository studentRepository;
     private final CourseStudentClient courseStudentClient;
+    private final RabbitMQMessageProducer rabbitMQMessageProducer;
 
-    private final NotificationClient notificationClient;
-
-    public StudentServiceImpl(StudentRepository studentRepository, CourseStudentClient courseStudentClient, NotificationClient notificationClient) {
+    public StudentServiceImpl(StudentRepository studentRepository, CourseStudentClient courseStudentClient, RabbitMQMessageProducer rabbitMQMessageProducer) {
         this.studentRepository = studentRepository;
         this.courseStudentClient = courseStudentClient;
-        this.notificationClient = notificationClient;
+        this.rabbitMQMessageProducer = rabbitMQMessageProducer;
     }
 
     @Override
@@ -36,8 +36,11 @@ public class StudentServiceImpl implements StudentService{
                 studentRequest.email(),
                 "Hi %s, welcome to My-Learning"
         );;
-        notificationClient.send(notification);
-
+        rabbitMQMessageProducer.publish(
+                notification,
+                "internal.exchange",
+                "internal.notification.routing-key"
+        );
         CourseStudentResponse courseStudentResponse = courseStudentClient.addCourseStudent(student.getId(), 1);
     }
 }
