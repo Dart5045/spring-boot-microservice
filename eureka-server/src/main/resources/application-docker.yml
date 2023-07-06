@@ -1,0 +1,15 @@
+server:
+  port: 8761
+spring:
+  application:
+     name: eureka-server
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+management:
+  tracing:
+    sampling:
+      probability: 1.0 # only for testing purpose, switch back to 0.1 for production code
