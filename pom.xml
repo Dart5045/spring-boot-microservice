@@ -33,8 +33,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
     <spring.boot.dependencies.version>3.1.1</spring.boot.dependencies.version>
     <spring.cloud.dependencies.version>2022.0.3</spring.cloud.dependencies.version>
     <spring.boot.maven.plugin.version>3.1.0</spring.boot.maven.plugin.version>
@@ -99,8 +99,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.10.1</version>
         <configuration>
-          <source>17</source>
-          <target>17</target>
+          <source>18</source>
+          <target>18</target>
         </configuration>
       </plugin>
       <plugin>
@@ -109,7 +109,8 @@
         <version>3.3.1</version>
         <configuration>
           <from>
-            <image>eclipse-temurin:17</image>
+            <image>eclipse-temurin:18-jdk-jammy</image>
+              <!--@sha256:ab6154dfd59d4f45916d284b4268ef4a73a6f68e24841404d0876c48df9953e9-->
             <platforms>
               <platform>
                 <architecture>arm64</architecture>
