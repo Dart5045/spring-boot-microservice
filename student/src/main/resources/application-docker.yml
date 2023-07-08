@@ -15,10 +15,16 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
     show-sql: true
+  rabbitmq:
+    addresses: rabbitmq:5672
+# ============================================================================================================
+# EUREKA
+# It's not possible to use localhost in the docker container. Instate use the container name.
+# In this case "eureka-server". See the file docker-compose.yml to check the container name.
 eureka:
   client:
     service-url:
-      default-zone: eureka-server:8761/eureka
+      defaultZone: http://eureka-server:8761/eureka
     fetch-registry: true
     register-with-eureka: true
     enabled: true
@@ -26,5 +32,6 @@ management:
   tracing:
     sampling:
       probability: 1.0
-  rabbitmq:
-    addresses: localhost:5672
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans

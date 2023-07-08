@@ -5,7 +5,7 @@ spring:
      name: api-gateway
   cloud:
    gateway:
-     routes:
+       routes:
        - id: student
          uri: lb://STUDENT
          predicates:
@@ -17,7 +17,7 @@ spring:
 eureka:
   client:
     service-url:
-      default-zone: eureka-server:8761/eureka
+      defaultZone: http://eureka-server:8761/eureka
     fetch-registry: true
     register-with-eureka: true
     enabled: true
